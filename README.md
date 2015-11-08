@@ -32,7 +32,18 @@ cd ~/.dotfiles
 
 `install.sh` will start by initializing the submodules used by this repository. Then, it will install all symbolic links into your home directory. Every file with a `.symlink` extension will be symlinked to the home directory with a `.` in front of it. As an example, `vimrc.symlink` will be symlinked in the home directory as `~/.vimrc`. Then, this script will create a `~/.vim-tmp` directory in your home directory, as this is where vim is configured to place its temporary files. Additionally, all files in the `$DOTFILES/config` directory will be symlinked to the `~/.config/` directory for applications that follow the [XDG base directory specification](http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html), such as neovim.
 
-Next, the isntall script will perform a check to see if it is running on an OSX machine. If so, it will install Homebrew if it is not currently installed and will install the homebrew packages listed in [`brew.sh`](install/brew.sh). Then, it will run [`installosx.sh`](installosx.sh) and change some OSX configurations. This file is pretty well documented and so it is advised that you __read through and comment out any changes you do not want__. Next, the script will call [`install/nvm.sh`](install/nvm.sh) to install Node.js (stable) using nvm.
+Next, the install script will perform a check to see if it is running on an OSX machine. If so, it will install Homebrew if it is not currently installed and will install the homebrew packages listed in [`brew.sh`](install/brew.sh). Then, it will run [`installosx.sh`](installosx.sh) and change some OSX configurations. This file is pretty well documented and so it is advised that you __read through and comment out any changes you do not want__. Next, the script will call [`install/nvm.sh`](install/nvm.sh) to install Node.js (stable) using nvm.
+
+There are a few steps left over in order to get everything set up the way I like it. These could not be automated by a script because they require human interaction.
+
+1) Open vim by typing `vim` into the terminal. Run the `:PlugInstall` command in order to download all of my plugins.
+2) head back th `~/.dotfiles/install` and type `./snippets.sh`. This will properly initialize all of my custom snippets with autocompletion.
+3) Change your shell profile settings in order to use the Base16-eighties dark theme by default, and change your font to `Inconsolata for Powerline Plus Nerd File Types Plus Octicons Plus Pomicons Medium`
+
+After that you should be good to go!
+
+If you are seeing blue numbers in the side of your console when you are using vim. It is because the font installation script changes your settings during installation. Run `source ~/.dotfiles/.config/base16-shell/base16-eighties.dark.sh` in order to change the shell colors back to the proper values.
+
 
 ## ZSH Setup
 
@@ -52,25 +63,17 @@ ZSH is configured in the `zshrc.symlink` file, which will be symlinked to the ho
 
 The prompt is meant to be simple while still providing a lot of information to the user, particularly about the status of the git project, if the PWD is a git project. This prompt sets `precmd`, `PROMPT` and `RPROMPT`.
 
-![](http://nicknisi.com/share/prompt.png)
-
 The `precmd` shows the current working directory in it and the `RPROMPT` shows the git and suspended jobs info.
 
 #### Prompt Git Info
 
 The git info shown on the `RPROMPT` displays the current branch name, and whether it is clean or dirty.
 
-![](http://nicknisi.com/share/git-branch-state.png)
-
 Additionally, there are ⇣ and ⇡ arrows that indicate whether a commit has happened and needs to be pushed (⇡), and whether commits have happened on the remote branch that need to be pulled (⇣).
-
-![](http://nicknisi.com/share/git-arrows.png)
 
 #### Suspended Jobs
 
 The prompt will also display a ✱ character in the `RPROMPT` indicating that there is a suspended job that exists in the background. This is helpful in keeping track of putting vim in the background by pressing CTRL-Z.
-
-![](http://nicknisi.com/share/suspended-jobs.png)
 
 ## Vim and Neovim Setup
 
@@ -88,7 +91,7 @@ nvim +PlugInstall
 
 ### Fonts
 
-I am currently using [Hack](http://sourcefoundry.org/hack/) as my default font, which does include Powerline support, so you don't need an additional patched font. In addition to this, I do have [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) installed and configured to be used for non-ascii characters. If you would prefer not to do this, then simply remove the `Plug 'ryanoasis/vim-devicons'` plugin from vim/nvim. Then, I configure the fonts in this way in iTerm2:
+Currently I am using the Inconsolata font with Powerline support so that I can have good looking file icons when I use the NERDTree plugin in vim. If you would like to add any other fonts into your system, add the proper .otf file to `~/.dotfiles/.config/fonts/patched-fonts` directory.
 
 -----
 
