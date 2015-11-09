@@ -77,6 +77,10 @@ if [ -z "$BACKGROUND" ]; then
     export BACKGROUND="dark"
 fi
 
+# add in the qeme and pintos paths
+export PATH=/home/ee379k/pintos/src/utils:$PATH
+export PATH=/home/ee379k/Downloads/qemu-0.15.0:$PATH
+
 BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 source $BASE16_SHELL

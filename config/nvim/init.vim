@@ -65,13 +65,13 @@ call plug#end()
 	" CtrlP ignore patterns
 	let g:ctrlp_custom_ignore = {
 				\ 'dir': '\.git$\|node_modules$\|bower_components$\|\.hg$\|\.svn$',
-				\ 'file': '\.exe$\|\.so$'
+				\ 'file': '\.exe$\|\.so$|\.out$'
 				\ }
 	" only show files that are not ignored by git
 	let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 	" search the nearest ancestor that contains .git, .hg, .svn
-	" let g:ctrlp_working_path_mode = 2
+	let g:ctrlp_working_path_mode = 2
 " }}}
 " {{{ NERDTree
 	" close NERDTree after a file is opened
@@ -227,6 +227,8 @@ set wrap			" Lines wrap
 set shell=$SHELL
 set cmdheight=1
 set linebreak		" only wrap at a character in breakat
+set number
+set relativenumber
 set nolist			" list diables linebreak
 set textwidth=0		" Don't insert linebreaks for wrap
 set wrapmargin=0	" Don't insert linebreaks for wrap
@@ -243,7 +245,6 @@ set showmatch		" highlight matching [{()}]
 set backspace=2 	" can backspace through anything
 set autoread		" automatically updates file that has been changed outside of buffer
 set scrolloff=2		" Always shows at least 2 lines of context when scrolling
-set relativenumber
 
 " Disable backup and swap files
 set nobackup
@@ -333,7 +334,7 @@ endfunc
 " toggle between number and relativenumber and no number
 function! ToggleNumber()
 	if !exists("b:number_status")
-		let b:number_status = 2
+		let b:number_status = 1
 	endif
 
 	if (b:number_status == 1)
@@ -391,10 +392,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Allow using ctl + arrow up or down to move between folds
-nmap <C-Up> zk
-nmap <C-Down> zj
-
 " map esc to jk
 inoremap jk <esc>
 " move vertically by visual line not real line
@@ -426,6 +423,10 @@ nnoremap gV `[v`]
 
 " maps space to open and close folds
 nnoremap <space> za
+
+" Allow using ctl + arrow up or down to move between folds
+nmap <silent>fj zj
+nmap <silent>fk zk
 
 " easier moving of code blocks
 vnoremap < <gv
