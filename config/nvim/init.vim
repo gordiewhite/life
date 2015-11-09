@@ -10,6 +10,7 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 
 Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/deoplete.nvim'
 Plug 'scrooloose/syntastic'
+" Plug 'yueyoum/linemovement'
 Plug 'kien/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'ervandew/supertab'
@@ -87,8 +88,8 @@ call plug#end()
 	map <leader>y :NERDTreeFind<CR>
 " }}}
 "	linemovement {{{
-		" let g:linemovement_up="<Ctrl-Shift-k>"
-		" let g:linemovement_down="<Ctrl-Shift-j>"
+		" let g:linemovement_up="<A-Up>"
+		" let g:linemovement_down="<A-Down>"
 "	}}}
 "   {{{ Deoplete
 		let g:deoplete#enable_at_startup=1
