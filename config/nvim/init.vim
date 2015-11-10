@@ -6,9 +6,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
-" Plug 'Valloric/YouCompleteMe' " useful for vim autocomplete
+Plug 'Valloric/YouCompleteMe' " useful for vim autocomplete
 Plug 'ryanoasis/vim-devicons'
-Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/deoplete.nvim'
 Plug 'scrooloose/syntastic'
 " Plug 'yueyoum/linemovement'
 Plug 'kien/ctrlp.vim'
@@ -99,8 +99,8 @@ call plug#end()
 
         " Must press ctrl and an arrow key to move up and down completion
         " list
-        let g:ycm_key_list_select_completion=['<TAB>', '<C-Down>']
-        let g:ycm_key_list_previous_completion=['<S-TAB>', '<C_Up>']
+        let g:ycm_key_list_select_completion=['<C-n>', '<C-Down>']
+        let g:ycm_key_list_previous_completion=['<C-p>', '<C_Up>']
 
 		let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 		let g:ycm_show_diagnostics_ui = 0

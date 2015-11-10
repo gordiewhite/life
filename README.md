@@ -37,8 +37,10 @@ Next, the install script will perform a check to see if it is running on an OSX 
 There are a few steps left over in order to get everything set up the way I like it. These could not be automated by a script because they require human interaction.
 
 1) Open vim by typing `vim` into the terminal. Run the `:PlugInstall` command in order to download all of my plugins.
-2) head back th `~/.dotfiles/install` and type `./snippets.sh`. This will properly initialize all of my custom snippets with autocompletion.
-3) Change your shell profile settings in order to use the Base16-eighties dark theme by default, and change your font to `Inconsolata for Powerline Plus Nerd File Types Plus Octicons Plus Pomicons Medium`
+2) cd to `~/.vim/plugged/YouCompleteMe` and run `./install.py --clang-completer` in order to compile autocompletion with C support
+	* this plugin will no longer be useful as soon as the `deoplete` can do autocompletion asynchronously when neovim adds support for Ruby Plugins
+3) head back th `~/.dotfiles/install` and type `./snippets.sh`. This will properly initialize all of my custom snippets with autocompletion.
+4) Change your shell profile settings in order to use the Base16-eighties dark theme by default, and change your font to `Inconsolata for Powerline Plus Nerd File Types Plus Octicons Plus Pomicons Medium`
 
 After that you should be good to go!
 
