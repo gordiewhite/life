@@ -101,7 +101,7 @@ call plug#end()
 		let g:UltiSnipsExpandTrigger = "<tab>"
 		let g:UltiSnipsJumpForwardTrigger = "<tab>"
 		let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-		let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/.dotfiles/config/nvim/snippets"]
+		let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/.dotfiles/config/nvim/UltiSnips"]
 "	}}}
 "   Airline (better status bar) {{{
 		let g:airline#extensions#tabline#enabled = 2
@@ -146,8 +146,9 @@ call plug#end()
 			\ '']
 "	}}}
 " {{{ vimwiki
-" 'syntax' : 'markdown','ext' : '.md',
+
 		let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+					\ 'syntax' : 'markdown','ext' : '.md',
 					\ 'path_html': '~/Documents/vimwiki_html/'}]
 
 		let g:vimwiki_table_mappings = 0
