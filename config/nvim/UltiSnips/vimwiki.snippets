@@ -8,11 +8,13 @@ snippet code
 	\`\`\`
 endsnippet
 
-snippet yamlh
+snippet header "YAML header for a wiki page"
 ---
 layout: post
 title:  ${1}
-date:   `strftime("%Y-%m-%d %H:%M")`
+date:   `#!/usr/bin/perl
+my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime();
+printf("%04d-%02d-%02d %02d:%02d:%02d", $year + 1900, $mon + 1, $mday, $hour, $min, $sec);`
 categories: jekyll update
 ---
 endsnippet
