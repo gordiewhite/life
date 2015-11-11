@@ -13,7 +13,8 @@ Plug 'scrooloose/syntastic'
 " Plug 'yueyoum/linemovement'
 Plug 'kien/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'ervandew/supertab'
+" Plug 'mmai/vim-markdown-wiki'
+" Plug 'ervandew/supertab'
 Plug 'vim-scripts/Smart-Tabs'
 Plug 'benmills/vimux'
 Plug 'tpope/vim-commentary'
@@ -36,24 +37,9 @@ Plug 'mhinz/vim-startify'
 
 Plug 'sickill/vim-pasta' " context-aware pasting
 " Syntax hilighting for less
-" this stuff takes FOREVER to startup
-" Plug 'scooloose/nerdtree'
-" Plug 'groenewege/vim-less'
-" Plug 'skammer/vim-css-color'
-" Plug 'hail2u/vim-css3-syntax'
 
 " " Session manager
 " Plug 'xolox/vim-session'
-
-" " Vim notes
-" Plug 'xolox/vim-notes'
-" Plug 'xolox/vim-misc'
-
-" Used for javascript stuff
-" Plug 'marijnh/tern_for_vim'
-" Plug 'jelera/vim-javascript-syntax'
-" Plug 'pangloss/vim-javascript'
-" Plug 'nathanaelkane/vim-indent-guides'
 
 " Used for HTML/CSS
 " Plug 'mattn/emmet-vim'
@@ -115,6 +101,7 @@ call plug#end()
 		let g:UltiSnipsExpandTrigger = "<tab>"
 		let g:UltiSnipsJumpForwardTrigger = "<tab>"
 		let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+		let g:UltiSnipsSnippetDirectories = ["UltiSnips", "~/.dotfiles/config/nvim/snippets"]
 "	}}}
 "   Airline (better status bar) {{{
 		let g:airline#extensions#tabline#enabled = 2
@@ -159,9 +146,15 @@ call plug#end()
 			\ '']
 "	}}}
 " {{{ vimwiki
+" 'syntax' : 'markdown','ext' : '.md',
 		let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
-					\ 'syntax' : 'markdown','ext' : '.md',
 					\ 'path_html': '~/Documents/vimwiki_html/'}]
+
+		let g:vimwiki_table_mappings = 0
+		" let g:vimwiki_global_ext=0
+		" let g:vimwiki_ext2syntax={}
+		" vim thinks all markdown files are .mkd
+		autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 		augroup filetypedetect
 			au! BufRead,BufNewFile */vimwiki/*        set filetype=vimwiki
 		augroup END
