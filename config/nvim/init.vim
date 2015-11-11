@@ -147,9 +147,9 @@ call plug#end()
 "	}}}
 " {{{ vimwiki
 
-		let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
-					\ 'syntax' : 'markdown','ext' : '.md',
-					\ 'path_html': '~/Documents/vimwiki_html/'}]
+		let g:vimwiki_list = [{'path': '~/git/brycearden.github.io/_posts',
+					\ 'syntax' : 'markdown','ext' : '.md' }]
+					" \ 'path_html': '~/Documents/vimwiki_html/'}]
 
 		let g:vimwiki_table_mappings = 0
 		" let g:vimwiki_global_ext=0
