@@ -159,7 +159,12 @@ call plug#end()
 			\ '']
 "	}}}
 " {{{ vimwiki
-		let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'path_html': '~/Documents/vimwiki_html/', 'diary_rel_path': ''}]
+		let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+					\ 'syntax' : 'markdown','ext' : '.md',
+					\ 'path_html': '~/Documents/vimwiki_html/'}]
+		augroup filetypedetect
+			au! BufRead,BufNewFile */vimwiki/*        set filetype=vimwiki
+		augroup END
 " }}}
 " }}}
 
@@ -397,10 +402,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " smart way to rezise windows
-nnoremap <C-H> :vertical resize -5<cr>
-nnoremap <C-J> :resize +5<cr>
-nnoremap <C-K> :resize -5<cr>
-nnoremap <C-L> :vertical resize +5<cr>
+" nnoremap <C-H> :vertical resize -5<cr>
+" nnoremap <C-J> :resize +5<cr>
+" nnoremap <C-K> :resize -5<cr>
+" nnoremap <C-L> :vertical resize +5<cr>
 
 " easier commands to open splits, keeps things similar to tmux
 " nnoremap <leader>- :sp
