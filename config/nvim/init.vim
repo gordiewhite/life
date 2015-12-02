@@ -15,7 +15,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
 " Plug 'mmai/vim-markdown-wiki'
 " Plug 'ervandew/supertab'
-Plug 'vim-scripts/Smart-Tabs'
+" Plug 'vim-scripts/Smart-Tabs'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'benmills/vimux'
 Plug 'tpope/vim-commentary'
 Plug 'Lokaltog/vim-easymotion'
@@ -160,6 +161,13 @@ call plug#end()
 			au! BufRead,BufNewFile */vimwiki/*        set filetype=vimwiki
 		augroup END
 " }}}
+" Multiple Cursors {{{
+	" Default mapping
+	let g:multi_cursor_next_key='<leader>n'
+	let g:multi_cursor_prev_key='<leader>N'
+	let g:multi_cursor_skip_key='<leader>x'
+	let g:multi_cursor_quit_key='<Esc>'
+" }}}
 " }}}
 
 " General {{{
@@ -216,9 +224,13 @@ endif
 
 " Spaces and Tabs {{{
 filetype indent on	" load filetype-specific indent files
-set shiftwidth=4	" Number of spaces for auto indenting also effects reindent operations (<< and >>)
-set tabstop=4		" A tab is 4 spaces"
-set softtabstop=4	" number of spaces in tab when editing
+" set shiftwidth=4	" Number of spaces for auto indenting also effects reindent operations (<< and >>)
+set shiftwidth=2	" Number of spaces for auto indenting also effects reindent operations (<< and >>)
+" set tabstop=4		" A tab is 4 spaces"
+set tabstop=2		" A tab is 4 spaces"
+set expandtab		" Whenever a tab is pressed, insert spaces instead
+" set softtabstop=4	" number of spaces in tab when editing
+set softtabstop=2	" number of spaces in tab when editing
 set smarttab		" insert tabs on the start of a line according to
 					"    shiftwidth, not tab stop
 set autoindent		" turns on auto indentions
@@ -361,6 +373,15 @@ function! CmdLine(str)
 	unmenu Foo
 endfunction
 
+"slow multiple_cursors &amp; YCM
+function! Multiple_cursors_before()
+    let g:ycm_auto_trigger = 0
+endfunction
+
+function! Multiple_cursors_after()
+    let g:ycm_auto_trigger = 1
+endfunction
+
 function! VisualSelection(direction) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -490,7 +511,7 @@ noremap <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Toggle preferences
 nnoremap <leader>c :call ToggleNumber()<CR>
-nnoremap <leader>x :SyntasticToggleMode<CR>
+nnoremap <leader>sx :SyntasticToggleMode<CR>
 nnoremap <leader>z :set list!<CR>
 
 " Spell check stuff
