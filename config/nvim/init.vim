@@ -10,13 +10,8 @@ Plug 'Valloric/YouCompleteMe' " useful for vim autocomplete
 Plug 'ryanoasis/vim-devicons'
 " Plug 'Shougo/deoplete.nvim'
 Plug 'scrooloose/syntastic'
-" Plug 'yueyoum/linemovement'
 Plug 'kien/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
-" Plug 'mmai/vim-markdown-wiki'
-" Plug 'ervandew/supertab'
-" Plug 'vim-scripts/Smart-Tabs'
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'benmills/vimux'
 Plug 'tpope/vim-commentary'
 Plug 'Lokaltog/vim-easymotion'
@@ -25,8 +20,12 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'matze/vim-move'
+Plug 'tpope/vim-fugitive'
+" python plugins to meed standards
 Plug 'hynek/vim-python-pep8-indent'
-" Plug 'majutsushi/tagbar'
+" use :setfiletype django to prevent ultisnips from erroring on django templates
+Plug 'vim-scripts/django.vim'
+Plug 'majutsushi/tagbar'
 " Plug 'simplyzhao/cscope_maps.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'SirVer/ultisnips'
@@ -37,7 +36,6 @@ Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify'
 
 Plug 'sickill/vim-pasta' " context-aware pasting
-" Syntax hilighting for less
 
 " " Session manager
 " Plug 'xolox/vim-session'
@@ -168,6 +166,10 @@ call plug#end()
 	let g:multi_cursor_skip_key='<leader>x'
 	let g:multi_cursor_quit_key='<Esc>'
 " }}}
+" Ctags {{{
+"   Recursively search up to home directory for tags files
+    set tags=./tags;~/code
+" }}}
 " }}}
 
 " General {{{
@@ -225,12 +227,11 @@ endif
 " Spaces and Tabs {{{
 filetype indent on	" load filetype-specific indent files
 " set shiftwidth=4	" Number of spaces for auto indenting also effects reindent operations (<< and >>)
-set shiftwidth=2	" Number of spaces for auto indenting also effects reindent operations (<< and >>)
-" set tabstop=4		" A tab is 4 spaces"
-set tabstop=2		" A tab is 4 spaces"
+set shiftwidth=4	" Number of spaces for auto indenting also effects reindent operations (<< and >>)
+set tabstop=4		" A tab is 4 spaces"
 set expandtab		" Whenever a tab is pressed, insert spaces instead
 " set softtabstop=4	" number of spaces in tab when editing
-set softtabstop=2	" number of spaces in tab when editing
+set softtabstop=4	" number of spaces in tab when editing
 set smarttab		" insert tabs on the start of a line according to
 					"    shiftwidth, not tab stop
 set autoindent		" turns on auto indentions
@@ -346,6 +347,20 @@ func! DeleteTrailingWS()
     exe "normal `z"
 endfunc
 
+" function! LoadCscope()
+"   let db = findfile("cscope.out", ".;")
+"   if (!empty(db))
+"     let path = strpart(db, 0, match(db, "/cscope.out$"))
+"     set nocscopeverbose " suppress 'duplicate connection' error
+"     exe "cs add " . db . " " . path
+"     set cscopeverbose
+"   endif
+" endfunction
+" au BufEnter /* call LoadCscope()
+
+function! DoubleSpaces()
+    exec ':%s/^\(\(  \)\+\)/\1\1'
+endfunc
 " toggle between number and relativenumber and no number
 function! ToggleNumber()
 	if !exists("b:number_status")
@@ -509,6 +524,9 @@ nnoremap <leader>k :bn<CR>
 " Close the current buffer
 noremap <leader>bd :bp<bar>sp<bar>bn<bar>bd<CR>
 
+" change spacing and indendation
+nnoremap <leader>2s :call DoubleSpaces()<CR>
+
 " Toggle preferences
 nnoremap <leader>c :call ToggleNumber()<CR>
 nnoremap <leader>sx :SyntasticToggleMode<CR>
@@ -524,7 +542,7 @@ nnoremap <leader>se z=
 nnoremap <leader>a :Ag
 
 " shortcut to open NERDTree
-nnoremap <leader>nt :NERDTreeToggle
+nnoremap <leader>nt :NERDTreeToggle<CR>
 
 " Quick save command
 nnoremap <leader>w :call DeleteTrailingWS()<CR>:write<CR>
