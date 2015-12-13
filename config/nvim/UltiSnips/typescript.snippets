@@ -1,76 +1,101 @@
 snippet ref
 	/// <reference path="${1}"/>
+endsnippet
 snippet des
 	describe('${1}', () => {
 	});
+endsnippet
 snippet it
 	it('${1}', () => {
 	});
+endsnippet
 # dojo/AMD snippets
 snippet def
 	define([
 		${1}
 	], function (${2}) {
 	});
+endsnippet
 snippet dec
 	declare(${1}, {
 	});
+endsnippet
 snippet req
 	require([
 		${1}
 	], function (${2}) {
 	});
+endsnippet
 snippet inh
 	this.inherited(arguments);
+endsnippet
 # basic snippets
 snippet :
 	${1:key}: ${2:value}
+endsnippet
 snippet :f
 	${1:method_name}: function (${2:args}) {
 	}
+endsnippet
 snippet fn
 	function () {
 	}
+endsnippet
 snippet fun
 	function ${1:name}(${2:args}) {
 	}
+endsnippet
 snippet iife
 	(function () {
 		${1}
 	})();
+endsnippet
 snippet interval
 	setInterval(function () {
 		${2}
 	}, ${1});
+endsnippet
 snippet timeout
 	setTimeout(function () {
 		${2}
 	}, ${1});
+endsnippet
 # log snippets
 snippet log
 	console.log(${1});
+endsnippet
 snippet lred
 	console.log('%c${1}', 'font-weight:bold;color:red;');
+endsnippet
 snippet lgreen
 	console.log('%c${1}', 'font-weight:bold;color:green;');
+endsnippet
 snippet lblue
 	console.log('%c${1}', 'font-weight:bold;color:blue;');
+endsnippet
 snippet lpurple
 	console.log('%c${1}', 'font-weight:bold;color:purple;');
+endsnippet
 snippet lor
 	console.log('%c${1}', 'font-weight:bold;color:orange;');
+endsnippet
 snippet ctab
 	console.table(${1});
+endsnippet
 snippet debug
 	console.log('[DEBUG] ${1}');
+endsnippet
 snippet trace
 	console.trace();
+endsnippet
 snippet des
 	describe('${1}', function () {
 	});
+endsnippet
 snippet it
 	it('${1}', function () {
 	});
+endsnippet
 # dojo snippets
 snippet widget
 	define([
@@ -84,7 +109,9 @@ snippet widget
 			templateString: template
 		});
 	});
+endsnippet
 snippet doc
 	/**
 	 * ${1}
 	 */
+endsnippet
