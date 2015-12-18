@@ -35,7 +35,7 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 echo "installing fonts"
-cd .config/nerd-fonts
+cd .config/fonts
 ./install.sh
 cd ../..
 
