@@ -132,7 +132,7 @@ call plug#end()
 			\ ['My Sessions:'], 'sessions',
 			\ ['My Bookmarks:'], 'bookmarks',
 			\ ['Most Recently Used Files:'], 'files']
-		let g:startify_bookmarks = ['~/.vimrc']
+		let g:startify_bookmarks = ['~/.dotfiles/config/nvim/init.vim']
 		let g:startify_custom_header = [
 			\ '  Always code as if the guy who ends up maintaining your code',
 			\ '  will be a violent psychopath who knows where you live.',
@@ -157,10 +157,10 @@ call plug#end()
 " }}}
 " Multiple Cursors {{{
 	" Default mapping
-	let g:multi_cursor_next_key='<leader>n'
-	let g:multi_cursor_prev_key='<leader>N'
-	let g:multi_cursor_skip_key='<leader>x'
-	let g:multi_cursor_quit_key='<Esc>'
+	" let g:multi_cursor_next_key='<leader>n'
+	" let g:multi_cursor_prev_key='<leader>N'
+	" let g:multi_cursor_skip_key='<leader>x'
+	" let g:multi_cursor_quit_key='<Esc>'
 " }}}
 " Ctags {{{
 "   Recursively search up to home directory for tags files
@@ -570,6 +570,8 @@ nnoremap <leader>s :set spell!<CR>
 nnoremap <leader>sn ]s
 nnoremap <leader>sp [s
 nnoremap <leader>se z=
+
+nnoremap <leader><leader>p :CtrlPMRU<CR>
 
 " silver searcher
 nnoremap <leader>a :Ag
