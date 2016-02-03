@@ -22,6 +22,7 @@ brew install hub
 brew install macvim --override-system-vim
 brew install reattach-to-user-namespace
 brew install tmux
+brew install python
 brew install zsh
 # brew install highlight
 # brew install nvm
@@ -30,5 +31,7 @@ brew install zsh
 
 # install neovim
 brew install neovim/neovim/neovim
+
+echo "Finished installing homebrew packages"
 
 exit 0

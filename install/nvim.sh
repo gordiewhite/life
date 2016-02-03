@@ -2,6 +2,14 @@
 
 echo "installing neovim..."
 
+if [ "$(uname)" == "Darwin" ]; then
+    echo "Running OSX.. enabling python support for nvim"
+    pip2 install --user neovim
+    pip3 install --user neovim
+    exit 0
+fi
+
+echo "installing neovim on Linux"
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt-get update
@@ -28,6 +36,4 @@ sudo update-alternatives --config editor
 
 
 
-
-
-
+exit 0

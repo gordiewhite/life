@@ -5,14 +5,10 @@ echo "Installing dotfiles"
 echo "Initializing submodule(s)"
 git submodule update --init --recursive
 
-echo "installing neovim"
-source install/nvim.sh
-
-echo "Installing all cli tools"
-source install/apt-get.sh
-
-echo "creating all of the symlinks"
-source install/link.sh
+if [ "$(uname)" == "Linux" ]; then
+    echo "Installing all linux cli tools"
+    source install/apt-get.sh
+fi
 
 if [ "$(uname)" == "Darwin" ]; then
     echo "Running on OSX"
@@ -34,6 +30,12 @@ if [ "$(uname)" == "Darwin" ]; then
     # ln -s ~/.dotfiles/nginx/code.dev /usr/local/etc/nginx/sites-enabled/code.dev
 fi
 
+echo "installing neovim"
+source install/nvim.sh
+
+echo "creating all of the symlinks"
+source install/link.sh
+
 echo "installing fonts"
 cd .config/fonts
 ./install.sh
@@ -45,4 +47,8 @@ mkdir -p ~/.vim-tmp
 echo "Configuring zsh as default shell"
 chsh -s $(which zsh)
 
+echo "importing eighties dark terminal theme on OSX"
+if [ "$(uname)" == "Darwin" ]; then
+    open .config/base16-eighties.dark.terminal
+fi
 echo "Done."

@@ -19,7 +19,8 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'matze/vim-move'
 Plug 'tpope/vim-fugitive'
 Plug 'hynek/vim-python-pep8-indent'
@@ -186,8 +187,12 @@ let g:tex_flavor = "latex"
 " Colors {{{
 syntax enable
 " set the colorscheme
-let g:base16_shell_path='base16-builder/output/gnome-terminal'
-let base16colorspace="256"
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Linux"
+    let g:base16_shell_path='base16-builder/output/gnome-terminal'
+    let base16colorspace="256"
+endif
+
 set t_Co=256
 " set background=dark
 " colorscheme base16-eighties
@@ -354,6 +359,12 @@ au BufNewFile,BufRead *.pn set filetype=potion
 " }}}
 
 " Custom Functions {{{
+
+" disable all of vim beeps and flashes
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
 
 " recursively search up from dirname, sourcing all .vimrc.local files along the way
 function! ApplyLocalSettings(dirname)
