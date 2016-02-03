@@ -11,6 +11,9 @@ echo "installing tmux"
 sudo apt-get install tmux
 echo "installing ag"
 sudo apt-get install silversearcher-ag
+echo "installing xclip"
+sudo apt-get install xclip
 
 echo "all cli tools have been installed!"
+exit 0
 
