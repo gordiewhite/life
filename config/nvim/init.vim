@@ -189,7 +189,7 @@ syntax enable
 " set the colorscheme
 let s:uname = system("echo -n \"$(uname)\"")
 if !v:shell_error && s:uname == "Linux"
-    let g:base16_shell_path='base16-builder/output/gnome-terminal'
+    let g:base16_shell_path='~/.dotfiles/.config/base-16-shell'
     let base16colorspace="256"
 endif
 
