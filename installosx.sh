@@ -203,5 +203,9 @@ defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Fi
 # Commented out, as this is known to cause problems when saving files in Adobe Illustrator CS5 :(
 #echo "0x08000100:0" > ~/.CFUserTextEncoding
 
+# fix terminfo entry for neovim ^H mapping.
+echo "fixing terminfo entry for neovim so that ^H mapping works"
+tic ./.config/xterm-256color.ti
+
 echo "Kill affected applications"
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
