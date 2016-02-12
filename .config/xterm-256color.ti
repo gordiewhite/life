@@ -4,6 +4,10 @@
 #	it as a backspace. This workaround replaces the terminfo entry by replacing kbs=^H
 #	by kbs=\177(ascii del). This is the fixed terminfo entry
 #	Reconstructed via infocmp from file: /usr/share/terminfo/78/xterm-256color
+#
+#	Here is the command to generate this file (if I ever need it)
+#
+#	infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 xterm-256color|xterm with 256 colors,
 	am, bce, ccc, km, mc5i, mir, msgr, npc, xenl,
 	colors#256, cols#80, it#8, lines#24, pairs#32767,
