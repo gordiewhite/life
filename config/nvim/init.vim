@@ -10,10 +10,11 @@ Plug 'Valloric/YouCompleteMe' " useful for vim autocomplete
 Plug 'ryanoasis/vim-devicons'
 " Plug 'Shougo/deoplete.nvim'
 " Plug 'scrooloose/syntastic'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'benekastah/neomake'
 Plug 'kien/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'benmills/vimux'
+" Plug 'benmills/vimux'
 Plug 'tpope/vim-commentary'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'rking/ag.vim'
@@ -166,6 +167,17 @@ call plug#end()
 " Ctags {{{
 "   Recursively search up to home directory for tags files
     set tags=./tags;~/code
+" }}}
+" Vim-tmux-navigator {{{
+    let g:tmux_navigator_no_mappings = 1
+
+    nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+    nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+    nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+    nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+    nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+    " Autosave when leaving a vim split
+    " let g:tmux_navigator_save_on_switch = 1
 " }}}
 " }}}
 
@@ -470,10 +482,10 @@ endfunction
 nmap T :TagbarToggle<CR>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
 
 " smart way to rezise windows
 " nnoremap <C-H> :vertical resize -5<cr>
@@ -602,6 +614,11 @@ vnoremap <silent><leader>r :call VisualSelection('replace')<CR>
 " 'super save' saves an assortment of windows that can be reopened with vim -S
 nnoremap <leader>ms :SaveSession<CR>
 " }}}
+
+" This is a (hopefully) temporary workaround for neovim#2048.
+if has('nvim')
+    nmap <bs> :<c-u>TmuxNavigateLeft<cr>
+endif
 
 " Last 5 lines are modelines
 set modelines=5
