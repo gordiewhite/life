@@ -15,5 +15,4 @@ echo "installing xclip"
 sudo apt-get install xclip
 
 echo "all cli tools have been installed!"
-exit 0
 

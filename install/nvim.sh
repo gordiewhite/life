@@ -6,7 +6,7 @@ if [ "$(uname)" == "Darwin" ]; then
     echo "Running OSX.. enabling python support for nvim"
     pip2 install --user neovim
     pip3 install --user neovim
-    exit 0
+    return
 fi
 
 echo "installing neovim on Linux"
@@ -33,7 +33,3 @@ sudo update-alternatives --config vim
 sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
 sudo update-alternatives --config editor
 
-
-
-
-exit 0

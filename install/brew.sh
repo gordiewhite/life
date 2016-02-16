@@ -34,4 +34,3 @@ brew install neovim/neovim/neovim
 
 echo "Finished installing homebrew packages"
 
-exit 0
