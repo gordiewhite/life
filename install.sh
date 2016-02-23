@@ -5,12 +5,12 @@ echo "Installing dotfiles"
 echo "Initializing submodule(s)"
 git submodule update --init --recursive
 
-if [ "$(uname)" == "Linux" ]; then
+if [ "$(uname)" -eq  "Linux" ]; then
     echo "Installing all linux cli tools"
     source install/apt-get.sh
 fi
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" -eq  "Darwin" ]; then
     echo "Running on OSX"
 
     echo "Brewing all the things"
@@ -48,7 +48,7 @@ echo "Configuring zsh as default shell"
 chsh -s $(which zsh)
 
 echo "importing eighties dark terminal theme on OSX"
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" -eq "Darwin" ]; then
     open .config/base16-eighties.dark.terminal
 fi
 echo "Done."
