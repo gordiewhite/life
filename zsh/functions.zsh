@@ -36,7 +36,7 @@ function ng-start() {
     sudo launchctl start homebrew.mxcl.nginx
 }
 function ng-restart() {
-     sudo launchctl start homebrew.mxcl.nginx
+    sudo launchctl start homebrew.mxcl.nginx
 }
 
 
@@ -124,6 +124,36 @@ function hl() {
     fi
 
     echo $src | highlight -O rtf --syntax $1 --font Inconsoloata --style $style --line-number --font-size 24 | pbcopy
+}
+
+function mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+
+
+# change up directory with up instead of cd ..
+function up() {
+    dir=""
+    if [ -z "$1" ]; then
+        dir=..
+    elif [[ $1 =~ ^[0-9]+$ ]]; then
+        x=0
+        while [ $x -lt ${1:-1} ]; do
+            dir=${dir}../
+            x=$(($x+1))
+        done
+    else
+        dir=${PWD%/$1/*}/$1
+    fi
+    cd "$dir" 2&> /dev/null || error_return "No such parent directory: $1"
+}
+
+# pass in a name and change to that dir
+function upstr() {
+    local dir
+    dir=$(up "$1" && pwd)
+    if [[ $? > 0 ]]; then
+        return 1
+    fi
+    echo "$dir"
 }
 
 # set the background color to light
